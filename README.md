@@ -167,7 +167,7 @@ All commands are run from the root of the project, from a terminal:
 
 
 ## PRACTICE - BLOG MANAGER
-### Deployment: Vercel - live:
+### Deployment: Vercel - live: https://astro-poc.vercel.app
 ### Tech stacks:
 You can refer available template [here](https://stackblitz.com/github/withastro/astro/tree/latest/examples/with-tailwindcss)
 
