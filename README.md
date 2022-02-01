@@ -137,6 +137,20 @@ Astro provides two different tools to pages to help generate pages by fetched da
 - Astro also automatically includes pagination metadata for things like previous/next page URL, total number of pages.
 - The `getStaticPath()` provides the `paginate()` function that we'll use to paginate your data.
 
+### Built-in components
+- <Code />
+- <Markdown />
+- <Prism />
+- <Debug />
+
+### API Reference:
+- Astro.fetchContent()
+- Astro.request
+- Astro.resolve()
+- Astro.site
+- Astro.slots
+- getStaticPaths
+
 ## Run app
 All commands are run from the root of the project, from a terminal:
 
