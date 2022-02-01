@@ -12,12 +12,12 @@ function formatDate(date) {
 }
 ---
 
-<article class="post">
+<article class="post shadow-md border-2 border-slate-100 px-10 py-10 mb-5">
 	<div class="data">
-		<h2>{post.title}</h2>
-		<a class="author" href={`/authors/${post.author}`}>{author.name}</a>
-		<time class="date" datetime={post.date}>{formatDate(post.date)}</time>
-		<p class="description">
+		<h2 class="text-fuchsia-700 font-bold text-md">{post.title}</h2>
+		<a class="text-cyan-600 font-semibold text-base" href={`/authors/${post.author}`}>{author.name}</a>
+		<time class="text-slate-500 font-semibold text-sm" datetime={post.date}>{formatDate(post.date)}</time>
+		<p class="text-slate-400 font-normal text-sm">
 			{post.description}
 			<a class="link" href={post.url} aria-label={`Read ${post.title}`}>Read</a>
 		</p>

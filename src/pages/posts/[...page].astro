@@ -2,19 +2,20 @@
 import authorData from 'src/data/authors.json';
 import PostPreview from 'layout:PostPreview';
 import BaseLayout from 'layout:BaseLayout';
+import Pagination from 'layout:Pagination';
 
 export async function getStaticPaths({ paginate }) {
 	const allPosts = Astro.fetchContent<MarkdownFrontmatter>('../../data/post/*.md');
 	const sortedPosts = allPosts.sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
 
 	// Return a paginated collection of paths for all posts
-	return paginate(sortedPosts, { pageSize: 10 });
+	return paginate(sortedPosts, { pageSize: 2 });
 }
 
 // page
 let title = 'Astro Blog';
 let description = 'Blog on Astro';
-let canonicalURL = Astro.request.canonicalURL;
+let canonicalURL = Astro.request.canonicalURL.pathname;
 
 // collection
 interface MarkdownFrontmatter {
@@ -26,7 +27,14 @@ interface MarkdownFrontmatter {
 const { page } = Astro.props;
 ---
 <BaseLayout title={title} description={description}>
-  <h2 class="title">All Posts</h2>
-  <small class="count">{page.start + 1}–{page.end + 1} of {page.total}</small>
+  <h2 class="text-fuchsia-700 font-bold text-xl">All Posts</h2>
+  <Pagination 
+    prevUrl={page.url.prev} 
+    nextUrl={page.url.next} 
+    current={canonicalURL}
+    total={parseInt(page.total)}
+    start={page.start}
+    end={page.end}
+  />
   {page.data.map((post) => <PostPreview post={post} author={authorData[post.author]} />)}
 </BaseLayout>
