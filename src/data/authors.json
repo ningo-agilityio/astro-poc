@@ -1,0 +1,10 @@
+{
+  "don": {
+    "name": "Don Quixote",
+    "image": "/assets/images/don.jpg"
+  },
+  "sancho": {
+    "name": "Sancho Panza",
+    "image": "/assets/images/sancho.jpg"
+  }
+}

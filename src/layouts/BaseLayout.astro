@@ -1,22 +1,20 @@
 ---
 // src/layouts/BaseLayout.astro
 import Nav from 'layout:Nav'
-const { title } = Astro.props;
+import MainHead from 'layout:MainHead'
+const { title = '', description = '' } = Astro.props;
 ---
 <html>
   <head>
-    <title>Astro Poc: { title }</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <title>{title}</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <style global>
-			@import "../styles/global.css";
-		</style>
+    <MainHead 
+      title={title} 
+      description={description} 
+      {...Astro.props}
+    />
   </head>
   <body>
     <Nav />
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto p-4">
       <!-- slot: your page content will be injected here. -->
       <slot />
     </div>

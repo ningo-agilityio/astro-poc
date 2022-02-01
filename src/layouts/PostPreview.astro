@@ -1,0 +1,25 @@
+---
+import type { Post } from 'src/types/Post';
+
+export interface Props {
+	post: Post;
+	author: string;
+}
+const { post, author } = Astro.props;
+
+function formatDate(date) {
+	return new Date(date).toUTCString().replace(/(\d\d\d\d) .*/, '$1'); // remove everything after YYYY
+}
+---
+
+<article class="post">
+	<div class="data">
+		<h2>{post.title}</h2>
+		<a class="author" href={`/authors/${post.author}`}>{author.name}</a>
+		<time class="date" datetime={post.date}>{formatDate(post.date)}</time>
+		<p class="description">
+			{post.description}
+			<a class="link" href={post.url} aria-label={`Read ${post.title}`}>Read</a>
+		</p>
+	</div>
+</article>

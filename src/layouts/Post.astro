@@ -1,0 +1,24 @@
+---
+import BaseLayout from 'layout:BaseLayout';
+
+const { content } = Astro.props;
+let canonicalURL = Astro.request.canonicalURL;
+---
+<BaseLayout
+  title={content.title} 
+  description={content.description}
+  image={content.image}
+  {canonicalURL}
+>
+  <main class="wrapper">
+    <h2 class="title">{content.title}</h2>
+    <p class="description">{content.description}</p>
+    <img class="img" src={content.image} alt="" />
+    <article class="article">
+      <slot />
+    </article>
+    <footer class="footer">
+      <a class="posts" href="/posts">All Posts</a>
+    </footer>
+  </main>
+</BaseLayout>
