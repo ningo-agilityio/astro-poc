@@ -7,5 +7,5 @@ const activeStyle = 'text-black font-semibold';
 <nav class="shadow-sm bg-slate-100 p-5">
   <a href={ROUTES.HOME} class={`mr-2 ${currentUrl === ROUTES.HOME ? activeStyle : 'text-slate-400'}`}>Home</a>
   <a href={ROUTES.POST} class={`mr-2 ${currentUrl.indexOf(ROUTES.POST) > -1 ? activeStyle : 'text-slate-400'}`}>Posts</a>
-  <a href={ROUTES.AUTHOR} class={`mr-2 ${currentUrl.indexOf(ROUTES.AUTHOR) > -1 ? activeStyle : 'text-slate-400'}`}>Authors</a>
+  <a href={`${ROUTES.AUTHOR}/don`} class={`mr-2 ${currentUrl.indexOf(ROUTES.AUTHOR) > -1 ? activeStyle : 'text-slate-400'}`}>Authors</a>
 </nav>

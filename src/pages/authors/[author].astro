@@ -1,0 +1,48 @@
+---
+import PostPreview from 'layout:PostPreview';
+import BaseLayout from 'layout:BaseLayout';
+import Pagination from 'layout:Pagination';
+import authorData from '../../data/authors.json';
+
+export function getStaticPaths() {
+	const allPosts = Astro.fetchContent<MarkdownFrontmatter>('../../data/post/*.md');
+	let allAuthorsUnique = [...new Set(allPosts
+    .sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
+    .map((p) => p.author))]
+    .map((author) => ({ 
+      params: { author }, props: { allPosts } 
+    }));
+	return allAuthorsUnique;
+}
+
+interface MarkdownFrontmatter {
+	date: number;
+	description: string;
+	title: string;
+	author: string;
+}
+
+const { allPosts, page } = Astro.props;
+const { params, canonicalURL } = Astro.request;
+const title = 'Astro Blog';
+const description = 'Blog on Astro';
+
+/** filter posts by author, sort by date */
+const posts = allPosts.filter((post) => post.author === params.author);
+const author = authorData[posts[0].author];
+---
+<BaseLayout title={title} description={description}>
+  <h2 class="text-fuchsia-700 font-bold text-xl flex-col justify-center align-center text-center">
+    {author.name}
+    <img class="block w-28 rounded-full shadow-md mx-auto mt-2 mb-10" src={author.image} alt="Author avatar" />
+  </h2>
+  <!-- <Pagination 
+    prevUrl={page.url.prev} 
+    nextUrl={page.url.next} 
+    current={canonicalURL.pathname || ''}
+    total={parseInt(page.total)}
+    start={page.start}
+    end={page.end}
+  /> -->
+  {posts.map((post) => <PostPreview post={post} author={authorData[post.author]} />)}
+</BaseLayout>
