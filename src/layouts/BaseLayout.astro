@@ -1,31 +1,24 @@
 ---
 // src/layouts/BaseLayout.astro
+import Nav from 'layout:Nav'
 const { title } = Astro.props;
 ---
 <html>
   <head>
-    <title>Example Layout: { title }</title>
+    <title>Astro Poc: { title }</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>{title}</title>
-    
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <style>
-      header {
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-        max-width: min(100%, 68ch);
-      }
-    </style>
+    <style global>
+			@import "../styles/global.css";
+		</style>
   </head>
   <body>
-    <!-- Adds a navigation bar to every page. -->
-    <nav>
-      <a href="/">Home</a>
-      <a href="/pokemons">Pokemons</a>
-    </nav>
-    <!-- slot: your page content will be injected here. -->
-    <slot />
+    <Nav />
+    <div class="container mx-auto px-4">
+      <!-- slot: your page content will be injected here. -->
+      <slot />
+    </div>
   </body>
 </html>

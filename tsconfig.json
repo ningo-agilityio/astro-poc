@@ -8,7 +8,7 @@
       ],
       "layout:*": [
         "src/layouts/*.astro"
-      ],
+      ]
     }
   }
 }

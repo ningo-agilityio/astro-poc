@@ -1,0 +1,11 @@
+---
+import { ROUTES } from 'src/constants/routes';
+const currentUrl = Astro.request.url.pathname;
+const activeStyle = 'text-black font-semibold';
+---
+<!-- Adds a navigation bar to every page. -->
+<nav class="shadow-sm bg-slate-100 p-5">
+  <a href={ROUTES.HOME} class={`mr-2 ${currentUrl === ROUTES.HOME ? activeStyle : 'text-slate-400'}`}>Home</a>
+  <a href={ROUTES.POST} class={`mr-2  ${currentUrl === ROUTES.POST ? activeStyle : 'text-slate-400'}`}>Posts</a>
+  <a href={ROUTES.AUTHOR} class={`mr-2 ${currentUrl === ROUTES.AUTHOR ? activeStyle : 'text-slate-400'}`}>Authors</a>
+</nav>
