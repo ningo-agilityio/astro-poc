@@ -1,0 +1,55 @@
+---
+// Component Imports
+import BaseLayout from 'layout:BaseLayout';
+
+export async function getStaticPaths({ paginate }) {
+  // Load your data with fetch(), Astro.fetchContent(), etc.
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=150`);
+  const result = await response.json();
+  const allPokemon = result.results;
+  console.log(allPokemon)
+  // Return a paginated collection of paths for all posts
+  return paginate(allPokemon, { pageSize: 10 });
+}
+// If set up correctly, The page prop now has everything that
+// you need to render a single page (see next section).
+const { page } = Astro.props;
+const total = parseInt(page.total);
+---
+<BaseLayout>
+  <h1>Page {page.currentPage}</h1>
+  <h2>Total: {page.total}</h2>
+  {page.url.prev && <a href={page.url.prev}>Prev</a>}
+  {page.url.next && <a href={page.url.next}>Next</a>}
+  <ul>
+    {page.data.map(item => <li><a href={item.url}>{item.name}</a></li>)}
+  </ul>
+  <div class="pagination">
+    {
+      Array(total).fill(0).map((item, index) => {
+        const currentUrl = `/pokemons/${index + 1}/`;
+        return <a href={currentUrl} class={page.url.current === currentUrl ? "active" : ""}>{index + 1}</a>
+      })
+    }
+  </div>
+</BaseLayout>
+<style>
+  .pagination {
+    word-wrap: break-word;
+  }
+  .pagination a {
+    margin-left: 5px;
+    margin-bottom: 5px;
+    padding: 2px;
+    width: 5px;
+    height: 5px;
+    line-height: 5px;
+  }
+  .pagination a:nth-child(5n):after {
+    content: "";
+    display: block;
+  }
+  .pagination a.active {
+    color: red;
+  }
+</style>

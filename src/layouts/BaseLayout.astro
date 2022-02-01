@@ -1,0 +1,31 @@
+---
+// src/layouts/BaseLayout.astro
+const { title } = Astro.props;
+---
+<html>
+  <head>
+    <title>Example Layout: { title }</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>{title}</title>
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <style>
+      header {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        max-width: min(100%, 68ch);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Adds a navigation bar to every page. -->
+    <nav>
+      <a href="/">Home</a>
+      <a href="/pokemons">Pokemons</a>
+    </nav>
+    <!-- slot: your page content will be injected here. -->
+    <slot />
+  </body>
+</html>
