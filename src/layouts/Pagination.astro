@@ -9,7 +9,7 @@ export interface Props {
 	total: number;
 }
 
-const { prevUrl, nextUrl, total, current, start, end } = Astro.props;
+const { prevUrl, nextUrl, total, start, end, current = '/posts/' } = Astro.props;
 ---
 
 <nav class="nav flex justify-between align-end mt-20 mb-10">
@@ -17,7 +17,7 @@ const { prevUrl, nextUrl, total, current, start, end } = Astro.props;
     <a href={prevUrl || '#'} aria-label="Previous Page"><Button disabled={!prevUrl}>&laquo;</Button></a>
     {
       Array(total - 1).fill(0).map((item, index) => {
-        const currentUrl = `${index === 0 ? '/posts/' : `/posts/${index + 1}/`}`;
+        const currentUrl = `${index === 0 ? `${current}` : `${current}${index + 1}/`}`;
         return <a href={currentUrl}><Button>{index + 1}</Button></a>
       })
     }

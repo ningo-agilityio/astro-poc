@@ -2,16 +2,22 @@
 import PostPreview from 'layout:PostPreview';
 import BaseLayout from 'layout:BaseLayout';
 import Pagination from 'layout:Pagination';
-import authorData from '../../data/authors.json';
+import authorData from '../../../data/authors.json';
 
-export function getStaticPaths() {
-	const allPosts = Astro.fetchContent<MarkdownFrontmatter>('../../data/post/*.md');
+export function getStaticPaths({ paginate }) {
+	const allPosts = Astro.fetchContent<MarkdownFrontmatter>('../../../data/post/*.md');
 	let allAuthorsUnique = [...new Set(allPosts
     .sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
     .map((p) => p.author))]
-    .map((author) => ({ 
-      params: { author }, props: { allPosts } 
-    }));
+    .map((author) => { 
+      // https://docs.astro.build/en/guides/pagination/ - Nested pagination
+      return paginate(
+        allPosts, { 
+          pageSize: 2, 
+          params: { author } 
+        }
+      ); 
+    });
 	return allAuthorsUnique;
 }
 
@@ -22,27 +28,28 @@ interface MarkdownFrontmatter {
 	author: string;
 }
 
-const { allPosts, page } = Astro.props;
+const { page } = Astro.props;
+const allPosts = page.data;
 const { params, canonicalURL } = Astro.request;
 const title = 'Astro Blog';
 const description = 'Blog on Astro';
-
 /** filter posts by author, sort by date */
 const posts = allPosts.filter((post) => post.author === params.author);
-const author = authorData[posts[0].author];
+const author = authorData[params.author];
+const authorPath = (canonicalURL.pathname || '').split(params.author)[0] + params.author + '/';
 ---
 <BaseLayout title={title} description={description}>
   <h2 class="text-fuchsia-700 font-bold text-xl flex-col justify-center align-center text-center">
     {author.name}
     <img class="block w-28 rounded-full shadow-md mx-auto mt-2 mb-10" src={author.image} alt="Author avatar" />
   </h2>
-  <!-- <Pagination 
+  <Pagination 
     prevUrl={page.url.prev} 
     nextUrl={page.url.next} 
-    current={canonicalURL.pathname || ''}
+    current={authorPath}
     total={parseInt(page.total)}
     start={page.start}
     end={page.end}
-  /> -->
+  />
   {posts.map((post) => <PostPreview post={post} author={authorData[post.author]} />)}
 </BaseLayout>

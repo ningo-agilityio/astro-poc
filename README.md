@@ -164,8 +164,6 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm run build`   | Build your production site to `./dist/`      |
 | `pnpm run preview` | Preview your build locally, before deploying |
 
-
-
 ## PRACTICE - BLOG MANAGER
 ### Deployment: Vercel - live: https://astro-poc.vercel.app
 ### Tech stacks:
