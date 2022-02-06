@@ -1,6 +1,22 @@
 # ASTRO POC
 
-## INTRODUCTION
+## PRACTICE - BLOG MANAGER
+### Deployment: Vercel - live: https://astro-poc.vercel.app/posts/
+### Tech stacks:
+- [Astro build](https://docs.astro.build/en/getting-started/)
+- [Tailwind](https://tailwindcss.com)
+### Astro usage
+1 - **Api reference**:
+- [getStaticPaths](https://docs.astro.build/en/reference/api-reference/#getstaticpaths): function executes in its own isolated scope once, before any page loads
+
+2 - **Layout**:
+- `<slot />`: lets Astro components define where any children elements (passed to the layout) should go (The same concept as `children` of React)
+- [**Partial Hydration**](https://docs.astro.build/en/core-concepts/component-hydration/) (“progressive enhancement” or “progressive hydration”): only hydrating the individual components that require JavaScript and leaving the rest of your site as static HTML
+
+3 - **Pagination**:
+- Astro also automatically includes pagination metadata for things like previous/next page URL, total number of pages, and more
+
+## NOTES
 MATERIAL: https://astro.build/
 
 ### Definitions
@@ -163,9 +179,3 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm run dev`     | Starts local dev server at `localhost:3000`  |
 | `pnpm run build`   | Build your production site to `./dist/`      |
 | `pnpm run preview` | Preview your build locally, before deploying |
-
-## PRACTICE - BLOG MANAGER
-### Deployment: Vercel - live: https://astro-poc.vercel.app
-### Tech stacks:
-- [Astro build](https://docs.astro.build/en/getting-started/)
-- [Tailwind](https://tailwindcss.com)
