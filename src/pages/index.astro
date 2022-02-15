@@ -5,7 +5,10 @@ import Carousel from '../components/Carousel';
 ---
 <BaseLayout title="My Astro Home Page">
   <h1>This is Astro Poc</h1>
-  <a href="shoebox://">open wallet</a>
+  <a href="market://details?id=com.google.android.apps.nbu.paisa.user">Wallet Android</a>
+  <a href="shoebox://">Wallet iOS</a>
+  <a href="https://play.google.com/store/apps/details?id=">Google Pay</a>
+  <p client:load>{window.navigator.userAgent}</p>
   <Carousel client:load/>
   <!-- <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script> -->
 </BaseLayout>
