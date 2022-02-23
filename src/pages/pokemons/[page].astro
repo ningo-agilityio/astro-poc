@@ -32,6 +32,23 @@ const total = parseInt(page.total);
       })
     }
   </div>
+  
+   <script src="https://cdn.withpersona.com/dist/persona-v3.4.1.js"></script>
+  <script>
+    const client = new Persona.Client({
+      themeId: "the_QW2Dm819Y2Gz7D3w7Ze8pdac",
+      templateId: "tmpl_KLDVfZys1czBAKzg2gwVcTy",
+      environment: "sandbox",
+      onReady: () => client.open(),
+      onComplete: ({ inquiryId, status, fields }) => {
+        // Inquiry completed. Optionally tell your server about it.
+        console.log(inquiryId);
+        port.postMessage(inquiryId);
+      },
+      onCancel: ({ inquiryId, sessionToken }) => console.log('onCancel'),
+      onError: (error) => console.log(error),
+    });
+  </script>
 </BaseLayout>
 <style>
   .pagination {
