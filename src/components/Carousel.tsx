@@ -1,10 +1,12 @@
 import { useEffect } from 'react'
 
-// if (typeof window !== 'undefined') {
-//   import('tw-elements')
-// } 
 const Carousel = () => {
   return <>
+  {/* <script type="text/partytown" 
+    dangerouslySetInnerHTML={{ __html: `
+      require('tw-elements')
+    `}}
+  /> */}
   <div id="carouselExampleCaptions" className="carousel slide relative" data-bs-ride="carousel">
     <div className="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
       <button

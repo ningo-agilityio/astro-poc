@@ -10,7 +10,7 @@ specifiers:
 
 dependencies:
   '@builder.io/partytown': 0.3.5
-  tw-elements: 1.0.0-alpha10_ef48b3b8837f8a23677bffe8f9cd866d
+  tw-elements: 1.0.0-alpha11_ef48b3b8837f8a23677bffe8f9cd866d
 
 devDependencies:
   astro: 0.22.20
@@ -3594,8 +3594,8 @@ packages:
       esbuild: 0.14.15
     dev: true
 
-  /tw-elements/1.0.0-alpha10_ef48b3b8837f8a23677bffe8f9cd866d:
-    resolution: {integrity: sha512-7RacBxrJ0QBXb51YrYbbggS8mmxaTEK4cfxHN3ilQlWyK+BWZvPYQAITf489WOiGAnbLERQbwmoAE3eOpHwNqg==}
+  /tw-elements/1.0.0-alpha11_ef48b3b8837f8a23677bffe8f9cd866d:
+    resolution: {integrity: sha512-4DjH3T+VqyYtHxM6eq6FhJ1/pDGQp5fit2rNQw79bkut0lWdEoAsw5P7sITATx4c6/6V9lrWDBdTqNdG9YzRNw==}
     dependencies:
       '@popperjs/core': 2.11.2
       bootstrap: 5.1.3_@popperjs+core@2.11.2
