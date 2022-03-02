@@ -1,3 +1,5 @@
+var path = require('path')
+
 module.exports = {
   projectRoot: '.',     // Where to resolve all URLs relative to. Useful if you have a monorepo project.
   pages: './src/pages', // Path to Astro components, pages, and data
@@ -14,4 +16,9 @@ module.exports = {
   renderers: [
     '@astrojs/renderer-react',
   ],
+  resolve: {
+    alias: {
+      '/vendor': path.resolve(__dirname, 'node_modules/tw-elements/dist'),
+    },
+  },
 };

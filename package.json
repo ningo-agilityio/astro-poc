@@ -3,11 +3,12 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "pnpm run partytown && astro dev",
+    "dev": "pnpm run partytown && pnpm run twElement && astro dev",
     "start": "astro dev",
-    "build": "pnpm run partytown && astro build",
+    "build": "pnpm run partytown && pnpm run twElement && astro build",
     "preview": "astro preview",
-    "partytown": "partytown copylib public/~partytown"
+    "partytown": "partytown copylib public/~partytown",
+    "twElement": "cp node_modules/tw-elements/dist/js/index.min.js public/vendor/tw-elements"
   },
   "devDependencies": {
     "astro": "^0.22.20",
