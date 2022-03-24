@@ -3,6 +3,8 @@
 import Nav from 'layout:Nav'
 import MainHead from 'layout:MainHead'
 const { title = '', description = '' } = Astro.props;
+const GMT_ID = (import.meta.env as any).PUBLIC_GTM_ID
+
 ---
 <html>
   <head>
@@ -13,6 +15,10 @@ const { title = '', description = '' } = Astro.props;
     />
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src=`https://www.googletagmanager.com/ns.html?id=${GMT_ID}`
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <Nav />
     <div class="container mx-auto p-4">
       <!-- slot: your page content will be injected here. -->

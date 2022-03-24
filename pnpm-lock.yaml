@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@builder.io/partytown': ^0.3.5
   astro: ^0.22.20
   autoprefixer: ^10.4.2
   postcss: ^8.4.5
@@ -8,7 +9,8 @@ specifiers:
   tw-elements: ^1.0.0-alpha10
 
 dependencies:
-  tw-elements: 1.0.0-alpha10_ef48b3b8837f8a23677bffe8f9cd866d
+  '@builder.io/partytown': 0.3.5
+  tw-elements: 1.0.0-alpha11_ef48b3b8837f8a23677bffe8f9cd866d
 
 devDependencies:
   astro: 0.22.20
@@ -360,6 +362,11 @@ packages:
       '@babel/helper-validator-identifier': 7.16.7
       to-fast-properties: 2.0.0
     dev: true
+
+  /@builder.io/partytown/0.3.5:
+    resolution: {integrity: sha512-2rMDvRZgD+ABAHJDHzT6bbiGyrnTL3V4zgC4qd0EpDUqsmTU2+4X+BMngHIHFDZlXAWi02CX8INgKvNSOSu52A==}
+    hasBin: true
+    dev: false
 
   /@emmetio/abbreviation/2.2.2:
     resolution: {integrity: sha512-TtE/dBnkTCct8+LntkqVrwqQao6EnPAs1YN3cUgxOxTaBlesBCY37ROUAVZrRlG64GNnVShdl/b70RfAI3w5lw==}
@@ -3587,8 +3594,8 @@ packages:
       esbuild: 0.14.15
     dev: true
 
-  /tw-elements/1.0.0-alpha10_ef48b3b8837f8a23677bffe8f9cd866d:
-    resolution: {integrity: sha512-7RacBxrJ0QBXb51YrYbbggS8mmxaTEK4cfxHN3ilQlWyK+BWZvPYQAITf489WOiGAnbLERQbwmoAE3eOpHwNqg==}
+  /tw-elements/1.0.0-alpha11_ef48b3b8837f8a23677bffe8f9cd866d:
+    resolution: {integrity: sha512-4DjH3T+VqyYtHxM6eq6FhJ1/pDGQp5fit2rNQw79bkut0lWdEoAsw5P7sITATx4c6/6V9lrWDBdTqNdG9YzRNw==}
     dependencies:
       '@popperjs/core': 2.11.2
       bootstrap: 5.1.3_@popperjs+core@2.11.2
